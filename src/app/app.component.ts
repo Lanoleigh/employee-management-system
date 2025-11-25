@@ -17,7 +17,8 @@ export class AppComponent {
     '/register',
     '/admin-dashboard',
     '/create-new-emp',
-    '/admin-dashboard/create-new-emp'
+    '/admin-dashboard/create-new-emp',
+        '/admin-dashboard/view-all-users'
 ];
 
   constructor(private router: Router) {

@@ -1,0 +1,45 @@
+<div>
+    <h2>All Employees</h2>
+    <table>
+        <thead>
+            <th>
+                <tr>Employee Id</tr>
+            </th>
+            <th>
+                <tr>Employee Name</tr>
+            </th>
+            <th>
+                <tr>Email Address</tr>
+            </th>
+            <th>
+                <tr>Job Title</tr>
+            </th>
+            <th>
+                <tr>Department</tr>
+            </th>
+        </thead>
+        <tbody *ngFor="let user of users">
+            <td>
+                <tr>{{user.id}}</tr>
+            </td>
+            <td>
+            <tr>{{user.firstName}} {{user.lastName}}</tr>
+            </td>
+            <td>
+                <tr>{{user.email}}</tr>
+            </td>
+            <td>
+                <tr>{{user.jobTitle}}</tr>
+            </td>
+            <td>
+                <tr>{{user.department}}</tr>
+            </td>
+            <td>
+                <tr>
+                    <button (click)="viewEmployee(user.id)">View Profile</button>
+                </tr>
+            </td>
+            
+        </tbody>
+    </table>
+</div>
