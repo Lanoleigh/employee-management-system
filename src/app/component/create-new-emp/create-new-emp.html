@@ -1,0 +1,32 @@
+<div>
+    <form  (ngSubmit)="createEmployee()">
+        <div>
+            <label>First Name</label>
+            <input [(ngModel)]="employee.firstName" name="firstName" placeholder="First name" type="text"/>
+            
+        </div>
+        <div>
+            <label>Last Name</label>
+                <input [(ngModel)]="employee.lastName" name="lastName" placeholder="Last name" type="text"/>
+        </div>
+        <div>
+            <label>Email</label>
+            <input [(ngModel)]="employee.email" name="email" placeholder="Email Address" type="text"/>
+            
+        </div>
+        <div>
+            <label>Job Title</label>
+            <input [(ngModel)]="employee.jobTitle" name="jobTitle" placeholder="Job Title" type="text"/>
+        </div>
+        <div>
+            <label>Department</label>
+            <input [(ngModel)]="employee.department" name="department" placeholder="Department" type="text"/>
+        </div>
+            <div>
+            <label>Activate Immediately</label>
+            <input [(ngModel)]="employee.active" name="active" type="checkbox"/>
+        </div>
+        <button type="submit" >Create new employee</button>
+
+    </form>
+</div>

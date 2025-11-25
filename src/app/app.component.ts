@@ -15,7 +15,9 @@ export class AppComponent {
 
   noNavbarRoutes = [
     '/register',
-    '/admin-dashboard'
+    '/admin-dashboard',
+    '/create-new-emp',
+    '/admin-dashboard/create-new-emp'
 ];
 
   constructor(private router: Router) {
