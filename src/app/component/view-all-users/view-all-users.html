@@ -1,4 +1,4 @@
-<div>
+<div class="table-container">
     <h2>All Employees</h2>
     <table>
         <thead>
@@ -36,10 +36,29 @@
             </td>
             <td>
                 <tr>
-                    <button (click)="viewEmployee(user.id)">View Profile</button>
+                    <button class="myBtn" (click)="viewEmployee(user.id)">View Profile</button>
                 </tr>
             </td>
             
         </tbody>
     </table>
+</div>
+<div class="edit-user-container">
+    <button formControlName="enableBtn" (click)="enableEditing()">Enable Editing</button>   
+    <form  (ngSubmit)="updateEmployee(oneEmp.id,oneEmp)" class="edit-form">
+        
+        <label for="firstName">First Name</label>
+        <input [readonly]="isReadOnly" [(ngModel)]="employee.firstName" placeholder="firstName"  [value]="oneEmp.firstName"/>
+        <label for="lastName">Last Name</label>
+        <input [readonly]="isReadOnly" [(ngModel)]="employee.lastName" placeholder="last name" [value]="oneEmp.lastName" />
+        <label for="email">Email</label>
+        <input [readonly]="isReadOnly" [(ngModel)]="employee.email" placeholder="email" [value]="oneEmp.email" />
+        <label for="jobTitle">Job Title</label>
+        <input [readonly]="isReadOnly" [(ngModel)]="employee.jobTitle" placeholder="Job Title" [value]="oneEmp.jobTitle" />
+        <label for="department">Department</label>
+        <input [readonly]="isReadOnly" [(ngModel)]="employee.department" placeholder="Department" [value]="oneEmp.department" />
+
+        <button [disabled]="isReadOnly" type="submit" >Update User Profile</button>
+    </form>
+    
 </div>
