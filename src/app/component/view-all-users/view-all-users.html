@@ -1,64 +1,67 @@
-<div class="table-container">
-    <h2>All Employees</h2>
-    <table>
-        <thead>
-            <th>
-                <tr>Employee Id</tr>
-            </th>
-            <th>
-                <tr>Employee Name</tr>
-            </th>
-            <th>
-                <tr>Email Address</tr>
-            </th>
-            <th>
-                <tr>Job Title</tr>
-            </th>
-            <th>
-                <tr>Department</tr>
-            </th>
-        </thead>
-        <tbody *ngFor="let user of users">
-            <td>
-                <tr>{{user.id}}</tr>
-            </td>
-            <td>
-            <tr>{{user.firstName}} {{user.lastName}}</tr>
-            </td>
-            <td>
-                <tr>{{user.email}}</tr>
-            </td>
-            <td>
-                <tr>{{user.jobTitle}}</tr>
-            </td>
-            <td>
-                <tr>{{user.department}}</tr>
-            </td>
-            <td>
-                <tr>
-                    <button class="myBtn" (click)="viewEmployee(user.id)">View Profile</button>
-                </tr>
-            </td>
+<div class="page-container">
+    <div class="table-container">
+        <h2>All Employees</h2>
+        <table>
+            <thead>
+                <th>
+                    <tr>Employee Id</tr>
+                </th>
+                <th>
+                    <tr>Employee Name</tr>
+                </th>
+                <th>
+                    <tr>Email Address</tr>
+                </th>
+                <th>
+                    <tr>Job Title</tr>
+                </th>
+                <th>
+                    <tr>Department</tr>
+                </th>
+            </thead>
+            <tbody *ngFor="let user of users">
+                <td>
+                    <tr>{{user.id}}</tr>
+                </td>
+                <td>
+                <tr>{{user.firstName}} {{user.lastName}}</tr>
+                </td>
+                <td>
+                    <tr>{{user.email}}</tr>
+                </td>
+                <td>
+                    <tr>{{user.jobTitle}}</tr>
+                </td>
+                <td>
+                    <tr>{{user.department}}</tr>
+                </td>
+                <td>
+                    <tr>
+                        <button class="myBtn" (click)="viewEmployee(user.id)">View Profile</button>
+                    </tr>
+                </td>
+                
+            </tbody>
+        </table>
+    </div>
+    <div class="edit-user-container">
+        <button (click)="enableEditing()">Enable Editing</button>   
+        <form  (ngSubmit)="updateEmployee(employee.id,employee)" class="edit-form">
             
-        </tbody>
-    </table>
-</div>
-<div class="edit-user-container">
-    <button formControlName="enableBtn" (click)="enableEditing()">Enable Editing</button>   
-    <form  (ngSubmit)="updateEmployee(oneEmp.id,oneEmp)" class="edit-form">
-        
-        <label for="firstName">First Name</label>
-        <input [readonly]="isReadOnly" [(ngModel)]="employee.firstName" placeholder="firstName"  [value]="oneEmp.firstName"/>
-        <label for="lastName">Last Name</label>
-        <input [readonly]="isReadOnly" [(ngModel)]="employee.lastName" placeholder="last name" [value]="oneEmp.lastName" />
-        <label for="email">Email</label>
-        <input [readonly]="isReadOnly" [(ngModel)]="employee.email" placeholder="email" [value]="oneEmp.email" />
-        <label for="jobTitle">Job Title</label>
-        <input [readonly]="isReadOnly" [(ngModel)]="employee.jobTitle" placeholder="Job Title" [value]="oneEmp.jobTitle" />
-        <label for="department">Department</label>
-        <input [readonly]="isReadOnly" [(ngModel)]="employee.department" placeholder="Department" [value]="oneEmp.department" />
+            <label for="firstName">First Name</label>
+            <input [readonly]="isReadOnly" [(ngModel)]="employee.firstName" placeholder="firstName" name="firstName"  />
+            <label for="lastName">Last Name</label>
+            <input [readonly]="isReadOnly" [(ngModel)]="employee.lastName" placeholder="last name" name="lastName"  />
+            <label for="email">Email</label>
+            <input [readonly]="isReadOnly" [(ngModel)]="employee.email" placeholder="email" name="email"  />
+            <label for="jobTitle">Job Title</label>
+            <input [readonly]="isReadOnly" [(ngModel)]="employee.jobTitle" placeholder="Job Title" name="jobTitle" />
+            <label for="department">Department</label>
+            <input [readonly]="isReadOnly" [(ngModel)]="employee.department" placeholder="Department" name="department"  />
 
-        <button [disabled]="isReadOnly" type="submit" >Update User Profile</button>
-    </form>
-    
+            <button [disabled]="isReadOnly" type="submit" >Update User Profile</button>
+        </form>
+        
+    </div>
 </div>
+

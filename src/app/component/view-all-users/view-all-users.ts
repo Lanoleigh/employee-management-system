@@ -19,6 +19,7 @@ import { FormGroup, FormsModule, ReactiveFormsModule, FormBuilder } from '@angul
 
 export class ViewAllUsers implements OnInit {
     employee ={
+    id: '',
     firstName : '',
     lastName : '',
     email: '',
@@ -30,30 +31,40 @@ export class ViewAllUsers implements OnInit {
   isReadOnly = true;
   users : employee[] = [];
   oneEmp!: employee;
+  
 
   ngOnInit() : void{
-    this.empService.getAllEmployees().subscribe(data =>{
-      this.users = data;
-    });
+    this.loadUsers();
   }
   viewEmployee(userId:any){
     this.empService.getEmployee(userId).subscribe(data=>{
       this.oneEmp = data;
+      this.employee.id = this.oneEmp.id.toString();
+      this.employee.firstName = this.oneEmp.firstName;
+      this.employee.lastName = this.oneEmp.lastName;
+      this.employee.email = this.oneEmp.email;
+      this.employee.jobTitle = this.oneEmp.jobTitle;
+      this.employee.department = this.oneEmp.department;
     });
   }
   enableEditing(){
     this.isReadOnly = !this.isReadOnly;
   }
-  updateEmployee(id:any,emp: employee){
+  updateEmployee(id:any,emp: any){
 
     this.empService.updateEmployee(id,emp).subscribe(data=>{
-      if(data == null){
+      if(!data){
         alert("updating record failed");
-      }else{
-        alert(`update record sucessfully ${data.jobTitle}`);
-          this.oneEmp = data;
+        return;
       }
-    })
+        alert(`update record sucessfully`);
+        this.loadUsers();
+    });
 
+  }
+  loadUsers(){
+    this.empService.getAllEmployees().subscribe(data =>{
+      this.users = [...data];
+    });
   }
 }
